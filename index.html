@@ -263,13 +263,13 @@
     <button id="removeImage" class="menuBtn neutral">REMOVE IMAGE</button>
     <label for="bulletColor">Bullet color</label><input id="bulletColor" type="color">
     <label for="bulletShape">Bullet shape</label><select id="bulletShape"><option value="capsule">Capsule</option><option value="circle">Circle</option><option value="diamond">Diamond</option><option value="square">Square</option></select>
-    <p id="customStatus" role="status">Cosmetic only — every shape has the same hitbox.</p>
+    <p id="customStatus" role="status">You still have the same hitbox.</p>
     <button id="customDone" class="menuBtn primary">DONE</button>
   </div>
   <div id="mpWarning" class="panel" role="dialog" aria-modal="true" aria-labelledby="warningTitle">
     <h1 id="warningTitle">MULTIPLAYER NOTICE</h1>
     <div class="warningBody"><strong>Experimental mode · Expect some lag</strong><p>Long-distance matches can have delayed movement and shots. The host gets smoother gameplay.</p><p>For the best experience, play with someone nearby. On phones, landscape gives you more room.</p></div>
-    <button class="menuBtn primary" id="warningOK">OK — CONTINUE</button>
+    <button class="menuBtn primary" id="warningOK">ALRIGHT</button>
     <button class="menuBtn neutral" id="warningBack">BACK</button>
   </div>
   <div id="mpMenu" class="panel">
@@ -1594,7 +1594,7 @@ function applyGuestFrame(dt){
 function wireSocketEvents(){
   socket.on('connect', ()=>{
     finishLoading();
-    document.getElementById('mpStatus').textContent='Connected — choose or create a lobby.';
+    document.getElementById('mpStatus').textContent='Connected';
     socket.emit('list-lobbies');
     startPingMonitor();
   });
@@ -1704,7 +1704,7 @@ function wireSocketEvents(){
 function renderLobbyList(list){
   const el=document.getElementById('lobbyList');
   if(!list.length){
-    el.innerHTML='<div class="emptyLobbies">No open lobbies right now — create one!</div>';
+    el.innerHTML='<div class="emptyLobbies">No open lobbies right now</div>';
     return;
   }
   el.innerHTML='';
